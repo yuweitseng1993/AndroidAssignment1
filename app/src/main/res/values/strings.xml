@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AndroidAssignment1</string>
+    <string name="tv_home_app_descript">GreenFlag customers can create an account to access</string>
+    <string name="btn_txt_create_accnt">Create an account</string>
+    <string name="tv_txt_home_1">Car health updates</string>
+    <string name="tv_txt_home_2">Request a rescue online</string>
+    <string name="tv_txt_home_3">Policy information</string>
+    <string name="tv_txt_eml_addr">Email address</string>
+    <string name="tv_txt_crt_pswrd">Create password</string>
+    <string name="tv_txt_rpt_pswrd">Repeat password</string>
+    <string name="et_hint_scb">See criteria below</string>
+    <string name="btn_txt_next">Next</string>
+    <string name="tv_txt_crt_accnt">Create an account</string>
+    <string name="tv_txt_pswd_limit">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter. You can use special characters.</string>
+</resources>
