@@ -2,175 +2,188 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateAccount"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".CreateAccount">
 
 
     <TextView
         android:id="@+id/tv_create_accnt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/tv_txt_crt_accnt"
+        android:fontFamily="@font/museosans_300"
         android:textColor="@color/white"
         android:textSize="25sp" />
 
+    <View
+        android:id="@+id/v_div_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_create_accnt_title"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF" />
 
     <LinearLayout
         android:id="@+id/ll_user_enter_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_create_accnt_title"
+        android:layout_below="@id/v_div_line"
         android:orientation="vertical">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_email_addr"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/museosans_300"
-                android:text="@string/tv_txt_eml_addr"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/et_email_addr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="#FFFFFF"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:padding="8dp" />
-
-            <RelativeLayout
-                android:id="@+id/rl_invalid_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/popup_errmes_border"
-                android:padding="10dp"
-                tools:visibility="visible">
-
-                <ImageView
-                    android:id="@+id/iv_email_error"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@null"
-                    app:srcCompat="@drawable/cross" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_email_error_mes"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_email_addr"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/iv_email_error"
-                    android:layout_toEndOf="@id/iv_email_error"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/museosans_300"
+                    android:text="@string/tv_txt_eml_addr"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
-            </RelativeLayout>
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/tv_create_pswrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/museosans_300"
-                android:text="@string/tv_txt_crt_pswrd"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/et_create_pswrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="#FFFFFF"
-                android:ems="10"
-                android:hint="@string/et_hint_scb"
-                android:inputType="textPassword"
-                android:padding="8dp"/>
-
-            <TextView
-                android:id="@+id/tv_repeat_pswrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/museosans_300"
-                android:text="@string/tv_txt_rpt_pswrd"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-            <EditText
-                tools:ignore="Autofill"
-                android:id="@+id/et_repeat_pswrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:padding="8dp"
-                />
-
-            <RelativeLayout
-                android:id="@+id/rl_unmatch_pswd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/popup_errmes_border"
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/iv_pswd_error"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_email_addr"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@null"
-                    app:srcCompat="@drawable/cross" />
+                    android:layout_marginBottom="30dp"
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_invalid_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/popup_errmes_border"
+                    android:padding="10dp"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_email_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:contentDescription="@null"
+                        app:srcCompat="@drawable/cross" />
+
+                    <TextView
+                        android:id="@+id/tv_email_error_mes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/iv_email_error"
+                        android:layout_toEndOf="@id/iv_email_error"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/tv_pswd_error_mes"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_create_pswrd"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/iv_pswd_error"
-                    android:layout_toEndOf="@id/iv_pswd_error"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/museosans_300"
+                    android:text="@string/tv_txt_crt_pswrd"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
-            </RelativeLayout>
+                    android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/tv_pswrd_criteria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_txt_pswd_limit"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/et_create_pswrd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:hint="@string/et_hint_scb"
+                    android:inputType="textPassword"
+                    android:padding="8dp" />
 
-            <Button
-                android:id="@+id/btn_crt_accnt_next"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/gradient_button_background"
-                android:fontFamily="@font/museosans_300"
-                android:text="@string/btn_txt_next"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/tv_repeat_pswrd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="@string/tv_txt_rpt_pswrd"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
 
-        </LinearLayout>
-    </ScrollView>
+                <EditText
+                    android:id="@+id/et_repeat_pswrd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    tools:ignore="Autofill" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_unmatch_pswd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/popup_errmes_border"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_pswd_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:contentDescription="@null"
+                        app:srcCompat="@drawable/cross" />
+
+                    <TextView
+                        android:id="@+id/tv_pswd_error_mes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/iv_pswd_error"
+                        android:layout_toEndOf="@id/iv_pswd_error"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_pswrd_criteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_txt_pswd_limit"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_crt_accnt_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/gradient_button_background"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="@string/btn_txt_next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </RelativeLayout>
