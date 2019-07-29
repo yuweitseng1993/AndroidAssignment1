@@ -90,40 +90,43 @@
                 android:inputType="number"
                 android:padding="8dp" />
 
-            <Button
-                android:id="@+id/btn_datepicker"
+            <!--<Button-->
+                <!--android:id="@+id/btn_datepicker"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:layout_below="@id/et_usr_age"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:background="@drawable/gradient_button_background"-->
+                <!--android:fontFamily="@font/museosans_300"-->
+                <!--android:text="Choose Birth Date"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textSize="20sp" />-->
+
+            <EditText
+                android:id="@+id/et_datepicker"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_below="@id/et_usr_age"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/gradient_button_background"
-                android:fontFamily="@font/museosans_300"
-                android:text="Choose Birth Date"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Choose Birth Date"
+                android:inputType="textPersonName"
+                android:padding="8dp"
                 android:textAllCaps="false"
-                android:textSize="20sp" />
-
-            <!--<Button-->
-                <!--android:id="@+id/btn_countrypicker"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="45dp"-->
-                <!--android:layout_below="@id/btn_datepicker"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:background="@drawable/gradient_button_background"-->
-                <!--android:fontFamily="@font/museosans_300"-->
-                <!--android:text="Not-Specified"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textSize="20sp" />-->
+                android:textSize="18sp"
+                android:focusableInTouchMode="false"/>
 
             <Spinner
                 android:id="@+id/sp_country"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:spinnerMode="dialog"
-                android:layout_below="@id/btn_datepicker"
+                android:layout_below="@id/et_datepicker"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"

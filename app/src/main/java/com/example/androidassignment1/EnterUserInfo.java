@@ -20,8 +20,8 @@ import java.util.Calendar;
 import static java.lang.Integer.parseInt;
 
 public class EnterUserInfo extends AppCompatActivity {
-    EditText et_name, et_u_name, et_usr_pswd, et_age, et_addr;
-    Button btn_sv, btn_bir_pick;
+    EditText et_name, et_u_name, et_usr_pswd, et_bir_pick, et_age, et_addr;
+    Button btn_sv;
     RadioGroup rad_gp;
     RadioButton rad_btn;
     Spinner spin_country;
@@ -41,7 +41,7 @@ public class EnterUserInfo extends AppCompatActivity {
         et_usr_pswd = findViewById(R.id.et_pswd);
         et_age = findViewById(R.id.et_usr_age);
         et_addr= findViewById(R.id.et_postal_addr);
-        btn_bir_pick = findViewById(R.id.btn_datepicker);
+        et_bir_pick = findViewById(R.id.et_datepicker);
         spin_country = findViewById(R.id.sp_country);
         btn_sv = findViewById(R.id.btn_save);
         rad_gp = findViewById(R.id.rg_gender);
@@ -56,7 +56,7 @@ public class EnterUserInfo extends AppCompatActivity {
         spin_country.setAdapter(adapter);
 
 
-        btn_bir_pick.setOnClickListener(new View.OnClickListener() {
+        et_bir_pick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 calendar = Calendar.getInstance();
@@ -71,6 +71,7 @@ public class EnterUserInfo extends AppCompatActivity {
                                 picked_year = year;
                                 picked_month = month;
                                 picked_dayOfMonth = day;
+                                et_bir_pick.setText(month+"/"+day+"/"+year);
 //                                Log.i("user_input", "year: " + year + " month: " + month + " day: " + day);
                             }
                         }, year, month, dayOfMonth);
@@ -87,6 +88,7 @@ public class EnterUserInfo extends AppCompatActivity {
                 String password = et_usr_pswd.getText().toString();
                 String age_str = et_age.getText().toString();
                 country = spin_country.getSelectedItem().toString();
+                address = et_addr.getText().toString();
 
                 if(name.length() == 0 || username.length() == 0 || password.length() == 0 || age_str.length() == 0){
                     has_empty_field = true;
@@ -111,7 +113,7 @@ public class EnterUserInfo extends AppCompatActivity {
                             "\nbirth date: " + picked_month + "/" + picked_dayOfMonth + "/" + picked_year + "\ncountry: " + country +
                             "\ngender: " + gender;
                     Log.i("user_input", message);
-                    if(address.equals("none")){
+                    if(address.equals("")){
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                     }
                     else{
