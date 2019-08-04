@@ -7,10 +7,31 @@
     tools:context=".EnterUserInfo"
     android:background="@color/black">
 
+    <TextView
+        android:id="@+id/tv_create_accnt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/tv_txt_ent_usr_info"
+        android:fontFamily="@font/museosans_500"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <View
+        android:id="@+id/v_div_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_create_accnt_title"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_below="@id/v_div_line"
         android:padding="8dp">
 
         <RelativeLayout
@@ -73,7 +94,8 @@
                 android:fontFamily="@font/museosans_300"
                 android:text="@string/btn_txt_change_photo"
                 android:textAllCaps="false"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
 
 
             <EditText
@@ -235,7 +257,8 @@
                 android:fontFamily="@font/museosans_300"
                 android:text="Save"
                 android:textAllCaps="false"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
         </RelativeLayout>
     </LinearLayout>
 

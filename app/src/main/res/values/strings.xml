@@ -13,4 +13,5 @@
     <string name="tv_txt_crt_accnt">Create an account</string>
     <string name="tv_txt_pswd_limit">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter. You can use special characters.</string>
     <string name="btn_txt_change_photo">Change Photo</string>
+    <string name="tv_txt_ent_usr_info">Enter User Information</string>
 </resources>

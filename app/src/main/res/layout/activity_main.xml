@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/black">
+    android:paddingTop="80dp"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -146,7 +147,7 @@
         android:fontFamily="@font/museosans_300"
         android:text="@string/btn_txt_create_accnt"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp" />
 
 </RelativeLayout>

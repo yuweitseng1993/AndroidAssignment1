@@ -45,11 +45,11 @@ public class CreateAccount extends AppCompatActivity {
         btn_nxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(upper_err == true){
+                if(upper_err){
                     rl_invalid_email_fmt.setVisibility(View.GONE);
                     upper_err = false;
                 }
-                if(bottom_err == true){
+                if(bottom_err){
                     rl_nonmatch_pswd_err.setVisibility(View.GONE);
                     bottom_err = false;
                 }
@@ -110,6 +110,7 @@ public class CreateAccount extends AppCompatActivity {
 
                         //proceed to next intent only when all matches
                         if(!upper_err){
+                            //todo: transition animation; delete sleep()
                             try {
                                 Thread.sleep(2000);
                             }catch (Exception e){
@@ -133,7 +134,6 @@ public class CreateAccount extends AppCompatActivity {
                         rl_nonmatch_pswd_err.setVisibility(View.VISIBLE);
                         tv_btm_err_mes = findViewById(R.id.tv_pswd_error_mes);
                         tv_btm_err_mes.setText("Your passwords don't match");
-//                        et_email_addr.setText("");
                         et_crt_pswrd.setText("");
                         et_rpt_pswrd.setText("");
                         bottom_err = true;
@@ -150,7 +150,6 @@ public class CreateAccount extends AppCompatActivity {
                     rl_nonmatch_pswd_err.setVisibility(View.VISIBLE);
                     tv_btm_err_mes = findViewById(R.id.tv_pswd_error_mes);
                     tv_btm_err_mes.setText("Invalid password(s) entered");
-//                    et_email_addr.setText("");
                     et_crt_pswrd.setText("");
                     et_rpt_pswrd.setText("");
                     bottom_err = true;

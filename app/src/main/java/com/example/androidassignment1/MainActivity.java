@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), CreateAccount.class);
                 //move to CreateAccount class for login
                 startActivity(intent);
+                //todo: transition animation
             }
         });
     }

@@ -7,4 +7,5 @@
     <color name="white">#FFFFFF</color>
     <color name="corct_green">#5CB92F</color>
     <color name="err_pink">#D4004A</color>
+    <color name="usr_info_blk_gray">#424242</color>
 </resources>
