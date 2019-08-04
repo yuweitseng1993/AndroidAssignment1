@@ -1,5 +1,7 @@
 package com.example.androidassignment1;
 
+import android.provider.BaseColumns;
+
 public class DatabaseUtil {
     public static final String databaseName = "accountdb";
     public static final int databaseVersion = 1;
@@ -14,5 +16,10 @@ public class DatabaseUtil {
         public static final String countryColumn = "country";
         public static final String addressColumn = "address";
         public static final String photouriColumn = "photo";
+    }
+
+    public class EmailTable implements BaseColumns {
+        public static final String tableName = "email";
+        public static final String emailColumn = "usr_email";
     }
 }

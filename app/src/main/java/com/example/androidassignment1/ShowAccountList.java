@@ -49,27 +49,6 @@ public class ShowAccountList extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK && requestCode == PHOTO_REQUEST_CODE) {
-//            if (!checked_large_size) {
-//                if (data != null) {
-//                    Bundle samplePhoto = data.getExtras();
-//                    //we get the small version of the picture.
-//                    Bitmap rawData = (Bitmap) samplePhoto.get("data");
-//                    iv_photo.setImageBitmap(rawData);
-//                }
-//            } else {
-//                //if the intent contains the path for the image, generated for the Provider.
-//                Log.d(TAG, "onActivityResult: currentPhotoPath " + currentPhotoPath);
-//                Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
-////              Glide.with(this).load(currentPhotoPath).into(iv_photo);
-//                iv_photo.setImageBitmap(bitmap);
-//            }
-//        }
-//    }
-
     public List<User> loadAccount(){
         AccountDatabase database = new AccountDatabase(this);
         SQLiteDatabase readableDB = database.getReadableDatabase();

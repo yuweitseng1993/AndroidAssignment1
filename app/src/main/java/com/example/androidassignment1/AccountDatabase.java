@@ -13,7 +13,7 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + DatabaseUtil.AccountTable.tableName +
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DatabaseUtil.AccountTable.tableName +
                 " (" + DatabaseUtil.AccountTable.accountNum + " INTEGER PRIMARY KEY," +
                 DatabaseUtil.AccountTable.nameColumn + " VARCHAR(255)," +
                 DatabaseUtil.AccountTable.genderColumn + " VARCHAR(255)," +
@@ -22,6 +22,10 @@ public class AccountDatabase extends SQLiteOpenHelper {
                 DatabaseUtil.AccountTable.countryColumn + " VARCHAR(255)," +
                 DatabaseUtil.AccountTable.addressColumn + " VARCHAR(255)," +
                 DatabaseUtil.AccountTable.photouriColumn + " VARCHAR(255))" );
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DatabaseUtil.EmailTable.tableName +
+                " (" + DatabaseUtil.EmailTable._ID + " INTEGER PRIMARY KEY," +
+                DatabaseUtil.EmailTable.emailColumn + " VARCHAR(255))" );
     }
 
     @Override

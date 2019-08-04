@@ -3,11 +3,14 @@ package com.example.androidassignment1;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,8 +51,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         else{
             customViewHolder.tv_usr_addr.setVisibility(View.GONE);
         }
-        Bitmap bitmap = BitmapFactory.decodeFile(userList.get(i).photouri);
-        customViewHolder.iv_usr_pic.setImageBitmap(bitmap);
+        Log.d("!#customAdapter:", "onBindViewHolder: userList.get(i).photouri -> " + userList.get(i).photouri);
+        if(userList.get(i).photouri != null){
+            Bitmap bitmap = BitmapFactory.decodeFile(userList.get(i).photouri);
+            customViewHolder.iv_usr_pic.setImageBitmap(bitmap);
+        }
+        else{
+            customViewHolder.iv_usr_pic.setImageResource(R.mipmap.ic_launcher);
+        }
     }
 
     @Override

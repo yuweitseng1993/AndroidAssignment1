@@ -2,7 +2,10 @@ package com.example.androidassignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +16,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -20,7 +27,6 @@ public class CreateAccount extends AppCompatActivity {
     Button btn_nxt;
     RelativeLayout rl_invalid_email_fmt, rl_nonmatch_pswd_err;
     TextView tv_up_err_mes, tv_btm_err_mes;
-
     boolean upper_err, bottom_err;
 
     @Override
@@ -72,12 +78,24 @@ public class CreateAccount extends AppCompatActivity {
                 else{
                     //verify user input
                     if(validate_email_addr(usr_email)){
-                        //Green boarder for email EditText + green tick
-                        et_email_addr.setCompoundDrawablesWithIntrinsicBounds(null, null, tick, null);
-                        et_email_addr.setBackgroundResource(R.drawable.popup_cormes_border);
-
-                        //validates password
-                        validate_pswd(usr_pswd, usr_rpt_pswd);
+                        if(ifEmailExisted(usr_email)){
+                            rl_invalid_email_fmt.setVisibility(View.VISIBLE);
+                            et_email_addr.setBackgroundResource(R.drawable.popup_erret_border);
+                            tv_up_err_mes = findViewById(R.id.tv_email_error_mes);
+                            tv_up_err_mes.setText(R.string.tv_txt_err_email_existed);
+                            upper_err = true;
+                            et_email_addr.setText("");
+                            //validates password
+                            validate_pswd(usr_pswd, usr_rpt_pswd);
+                        }
+                        else{
+                            //Green boarder for email EditText + green tick
+                            addEmail(usr_email);
+                            et_email_addr.setCompoundDrawablesWithIntrinsicBounds(null, null, tick, null);
+                            et_email_addr.setBackgroundResource(R.drawable.popup_cormes_border);
+                            //validates password
+                            validate_pswd(usr_pswd, usr_rpt_pswd);
+                        }
                     }
                     else{
                         //ERROR: invalid email address
@@ -191,5 +209,35 @@ public class CreateAccount extends AppCompatActivity {
             }
         });
 
+    }
+
+    public Boolean ifEmailExisted(String email){
+        AccountDatabase database = new AccountDatabase(this);
+        SQLiteDatabase readableDB = database.getReadableDatabase();
+        Cursor cursor = readableDB.query(DatabaseUtil.EmailTable.tableName, null, null, null, null, null, null, null);
+        List<String> emailList = new ArrayList<>();
+        while(cursor.moveToNext()){
+            emailList.add(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUtil.EmailTable.emailColumn)));
+        }
+        readableDB.close();
+        if(emailList.contains(email))
+            return true;
+        else
+            return false;
+    }
+
+    public void addEmail(String email){
+        AccountDatabase database = new AccountDatabase(this);
+        SQLiteDatabase saveData = database.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DatabaseUtil.EmailTable.emailColumn, email);
+
+        if(saveData.insert(DatabaseUtil.EmailTable.tableName, null, values) > 0){
+            Toast.makeText(this, "Email info added successfully", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "ERROR: unable to add email to databaase", Toast.LENGTH_SHORT).show();
+        }
+        saveData.close();
     }
 }

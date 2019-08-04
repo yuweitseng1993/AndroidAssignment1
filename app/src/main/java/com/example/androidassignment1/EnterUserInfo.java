@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,11 +16,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -36,6 +40,7 @@ public class EnterUserInfo extends AppCompatActivity {
     RadioGroup rad_gp;
     RadioButton rad_btn;
     Spinner spin_country;
+    ImageView iv_photo;
 
     String gender, country, address;
     DatePickerDialog datePickerDialog;
@@ -60,6 +65,7 @@ public class EnterUserInfo extends AppCompatActivity {
         btn_sv = findViewById(R.id.btn_save);
         btn_take_photo = findViewById(R.id.btn_chg_photo);
         rad_gp = findViewById(R.id.rg_gender);
+        iv_photo = findViewById(R.id.iv_user_photo);
         picked_year = picked_month = picked_dayOfMonth = 0;
         gender = address = "none";
 
@@ -213,5 +219,15 @@ public class EnterUserInfo extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         return intent;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PHOTO_REQUEST_CODE) {
+            Log.d(TAG, "onActivityResult: currentPhotoPath " + currentPhotoPath);
+            Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath);
+            iv_photo.setImageBitmap(bitmap);
+        }
     }
 }
