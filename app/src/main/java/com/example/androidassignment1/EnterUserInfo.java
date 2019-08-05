@@ -1,11 +1,14 @@
 package com.example.androidassignment1;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -43,9 +46,10 @@ public class EnterUserInfo extends AppCompatActivity {
     ImageView iv_photo;
 
     String gender, country, address;
-    DatePickerDialog datePickerDialog;
+//    DatePickerDialog datePickerDialog;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
     int year, picked_year, month, picked_month, dayOfMonth, picked_dayOfMonth;
-    Calendar calendar;
+//    Calendar calendar;
     private final int PHOTO_REQUEST_CODE = 404;
     String currentPhotoPath;
     private static final String TAG = "EnterUserInfo";
@@ -85,28 +89,39 @@ public class EnterUserInfo extends AppCompatActivity {
             }
         });
 
+        // custom datepicker
+        // code source: https://github.com/mitchtabian/DatePickerDialog/blob/master/DatePickerDialog/app/src/main/java/tabian/com/datepickerdialog/MainActivity.java
         et_bir_pick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calendar = Calendar.getInstance();
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                datePickerDialog = new DatePickerDialog(EnterUserInfo.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                picked_year = year;
-                                picked_month = month;
-                                picked_dayOfMonth = day;
-                                et_bir_pick.setText(month+"/"+day+"/"+year);
-//                                Log.i("user_input", "year: " + year + " month: " + month + " day: " + day);
-                            }
-                        }, year, month, dayOfMonth);
-                datePickerDialog.show();
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EnterUserInfo.this,
+                        AlertDialog.THEME_HOLO_DARK,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
             }
         });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+                picked_month = month;
+                picked_dayOfMonth = day;
+                picked_year = year;
+                String date = month + "/" + day + "/" + year;
+                et_bir_pick.setText(date);
+            }
+        };
 
         btn_sv.setOnClickListener(new View.OnClickListener() {
             @Override
